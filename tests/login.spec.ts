@@ -6,11 +6,10 @@ const validUsers = [
   'problem_user',
   'performance_glitch_user',
   'error_user',
-  'visual_user'
+  'visual_user',
 ];
 
 test.describe('Login Tests - Saucedemo', () => {
-
   for (const username of validUsers) {
     test(`TC01 - Valid Login with user: ${username}`, async ({ page }) => {
       await page.goto('https://www.saucedemo.com/');
@@ -40,5 +39,4 @@ test.describe('Login Tests - Saucedemo', () => {
     await page.click('#login-button');
     await expect(page.locator('[data-test="error"]')).toContainText('Username is required');
   });
-
 });
