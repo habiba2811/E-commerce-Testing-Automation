@@ -20,7 +20,7 @@ export default defineConfig({
     storageState: 'auth.json',         // add this instead of adding test.use({ storageState: 'auth.json' }); to every test
    // headless: true,    
      launchOptions: {
-    slowMo: 500,
+    slowMo: 1000,
   },                    
     screenshot: 'only-on-failure',         
     trace: 'retain-on-failure',           
