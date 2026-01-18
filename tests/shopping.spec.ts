@@ -37,7 +37,7 @@ test.describe('Shopping cart - Actions', () => {
 test.describe('Inventory - Sort Filters', ()=> {
 
   // send values and sort based on the passing value
-  test.only('TC01 - Apply filters by value options)', async ({ page }) => {
+  test('TC01 - Apply filters by value options)', async ({ page }) => {
     await page.goto('/inventory.html');
     await expect(page).toHaveTitle('Swag Labs');
     const sort = page.locator('[data-test="product-sort-container"]');
@@ -50,3 +50,23 @@ test.describe('Inventory - Sort Filters', ()=> {
   })
 })
 
+test.describe('Checkout Flow', () =>{
+  test('TC01 - Checkout', async ({page}) =>{
+    await page.goto('/inventory.html');
+    await expect(page).toHaveTitle('Swag Labs');
+    await addAllItems(page);
+    await page.locator('.shopping_cart_badge').click()
+    await expect(page).toHaveURL('/cart.html')
+    await page.getByRole('button', {name : 'checkout'}).click()
+    await expect(page.getByRole('heading', { name: 'Checkout: Your Information' })).toBeVisible();
+    await page.locator('[data-test="firstName"]').fill('test')
+    await page.locator('[data-test="lastName"]').fill('test')
+    await page.locator('[data-test="postalCode"]').fill('test')
+    await page.getByRole('button', {name :'continue'}).click()
+    await expect(page).toHaveURL('/checkout-step-two.html')
+    await page.getByRole('button', {name :'finish'}).click()
+    await expect(page.getByRole('heading', { name: 'Thank you for your order!' })).toBeVisible();
+
+  })
+
+})
