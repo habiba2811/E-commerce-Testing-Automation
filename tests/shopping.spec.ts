@@ -6,14 +6,14 @@ import {
   reomveAllItems,
 } from '../handlers/shoppingHandlers';
 
-test.describe('Shopping Tests - Cart functions', () => {
-  test('TC01 - Add 1 item to cart', async ({ page }) => {       // can use test.only -> to run only 1 test 
+test.describe('Shopping cart - Actions', () => {
+  test('TC01 - Add single item to cart', async ({ page }) => {       // can use test.only -> to run only 1 test 
     await page.goto('/inventory.html');
     await expect(page).toHaveTitle('Swag Labs');
     await addItem(page);
   });
 
-  test('TC02 - Remove 1 item from cart', async ({ page }) => {
+  test('TC02 - Remove single item from cart', async ({ page }) => {
     await page.goto('/inventory.html');
     await expect(page).toHaveTitle('Swag Labs');
     await addItem(page);
@@ -34,10 +34,10 @@ test.describe('Shopping Tests - Cart functions', () => {
   });
 });
 
-test.describe('Shopping Tests - Filters', ()=> {
+test.describe('Inventory - Sort Filters', ()=> {
 
   // send values and sort based on the passing value
-  test.only('TC01 - Apply filters by value)', async ({ page }) => {
+  test.only('TC01 - Apply filters by value options)', async ({ page }) => {
     await page.goto('/inventory.html');
     await expect(page).toHaveTitle('Swag Labs');
     const sort = page.locator('[data-test="product-sort-container"]');
