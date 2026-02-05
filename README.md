@@ -1,5 +1,9 @@
 # Playwright E-commerce Testing (SauceDemo)
 
+![Playwright](https://img.shields.io/badge/Playwright-Testing-brightgreen)
+![TypeScript](https://img.shields.io/badge/TypeScript-Language-blue)
+![Node.js](https://img.shields.io/badge/Node.js-Runtime-green)
+
 ## Overview
 A Playwright + TypeScript project that automates the [SauceDemo](https://www.saucedemo.com) app.
 Covers login scenarios and shopping flows such as cart actions, sorting, and checkout.
